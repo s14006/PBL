@@ -8,12 +8,11 @@ import java.io.IOException;
 public class UpdateClientStatus extends ConsoleStatus {
 
 	// フィールド
-	private PersonList pl;
+	private ClientList cl;
 
 	private String[] messages = {
 		"1.氏名\t\t\t2.住所\n",
-		"3.電話番号\t\t4.職種\n",
-		"5.勤続年数\t\t6.単価\n"
+		"3.電話番号\n"
 	};
 	private String data;
 
@@ -22,12 +21,12 @@ public class UpdateClientStatus extends ConsoleStatus {
 	 * @param String firstMess
 	 * @param String promptMess
 	 * @param boolean IsEndStatus
-	 * @param PersonList pl
+	 * @param ClientList cl
 	 */
 	UpdateClientStatus( String firstMess, String promptMess,
-	                 boolean IsEndStatus, PersonList pl ) {
+	                 boolean IsEndStatus, ClientList cl ) {
 		super( firstMess, promptMess, IsEndStatus );
-		this.pl = pl;
+		this.cl = cl;
 		this.data = "";
 	}
 
@@ -41,7 +40,7 @@ public class UpdateClientStatus extends ConsoleStatus {
 		int id, no, num;
 
 		// IDの入力
-		System.out.print( "従業員IDを入力してください。\n>" );
+		System.out.print( "顧客IDを入力してください。\n>" );
 		data = inputMessage();
 		try {
 			id = Integer.parseInt( data ); // 従業員ID
@@ -52,16 +51,16 @@ public class UpdateClientStatus extends ConsoleStatus {
 			return;
 		}
 
-		Person p = pl.get( id );
-		if( p == null ) {
-			System.out.println( "指定のIDの従業員は存在しません。" );
+		Client c = cl.get( id );
+		if( c == null ) {
+			System.out.println( "指定のIDの顧客は存在しません。" );
 			System.out.println( "再入力してください。" );
 			displayFirstMess();
 			return;
 		}
 
-		// 従業員の情報の出力
-		System.out.println( p.toString() );
+		// 顧客の情報の出力
+		System.out.println( c.toString() );
 		
 		System.out.println( "\n更新したい項目を入力してください。" );
 		// messagesの各文字列を順に表示する
@@ -78,24 +77,14 @@ public class UpdateClientStatus extends ConsoleStatus {
 			// 更新する値の入力
 			System.out.print( "\n更新後の値を入力してください。\n>" );
 			data = inputMessage();
-
-			if( no == 5 || no == 6 ) {
-				num = Integer.parseInt( data ); // 勤続年数または単価
-				if( no == 5 )
-					p.setWorkingYears( num );
-				else
-					p.setPrice( num );
-			}
-			else if( no >= 1 && no <= 4 ) {
+			if( no >= 1 && no <= 4 ) {
 				switch( no ) {
 					case 1:
-						p.setName( data );   break;
+						c.setName( data );   break;
 					case 2:
-						p.setAddress( data );   break;
+						c.setAddress( data );   break;
 					case 3:
-						p.setTel( data );   break;
-					case 4:
-						p.setType( data );   break;
+						c.setTel( data );   break;
 					default:
 						break;
 				}

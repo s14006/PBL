@@ -188,11 +188,19 @@ public class SystemManager {
 			clist
 		);
 
+		sts15 = new UpdateClientStatus(
+			"",
+			"更新しました。\nエンターキーを押すとメニューに戻ります。>",
+			false,
+			clist
+		);
+
 		sts1.setNextStatus( "S", sts2 );
 		sts1.setNextStatus( "JI", sts8 );
 		sts1.setNextStatus( "JU", sts9 );
 		sts1.setNextStatus( "JD", sts10 );
 		sts1.setNextStatus( "CI", sts14 );
+		sts1.setNextStatus( "CU", sts15 );
 		sts1.setNextStatus( "KI", sts11 );
 		sts1.setNextStatus( "KD", sts12 );
 		sts1.setNextStatus( "X", sts13 );
@@ -218,7 +226,9 @@ public class SystemManager {
 
 		sts12.setNextStatus( " ", sts1 );
 
-		sts14.setNextStatus( " ", sts1);
+		sts14.setNextStatus( " ", sts1 );
+
+		sts15.setNextStatus( " ", sts1 );
 	}
 
 	// システムの起動

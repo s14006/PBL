@@ -103,6 +103,7 @@ public class SystemManager {
 		// 職種から得た従業者リストを表示し，従業員IDを入力する状態
 		sts4 = new DisplayPersonsByTypeStatus(
 		    "",
+		    "P->前の3件　N->次の3件\n" + 
 		    "E->検索結果一覧終了（検索条件指定に戻る）[(従業員ID),E]>",
 		    false,
 		    plist,
@@ -120,6 +121,7 @@ public class SystemManager {
 		// 氏名から得た従業者リストを表示し，従業員IDを入力する状態
 		sts7 = new DisplayPersonsByNameStatus(
 		    "",
+		    "P->前の3件　N->次の3件\n" + 
 		    "E->検索結果一覧終了（検索条件指定に戻る）[(従業員ID),E]>",
 		    false,
 		    plist,
